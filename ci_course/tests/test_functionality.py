@@ -16,3 +16,9 @@ def test_minimum():
     assert ci_course.minimum(1, 2, 3) == 1
     assert ci_course.minimum(1.2, 2.3) == 1.2
     assert ci_course.minimum(-1.2, -3) == -3
+
+def test_minimum_wrong_input_type():
+    """
+    Test if the minimum function returns None when passed only invalid type arguments 
+    """
+    assert ci_course.minimum("John", "Anna") == None
