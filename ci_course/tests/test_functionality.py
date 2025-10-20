@@ -23,4 +23,4 @@ def test_minimum_wrong_input_type():
     Test if the minimum function returns None when passed only invalid type arguments 
     """
     assert ci_course.minimum("John", "Anna") is None
-    
+
