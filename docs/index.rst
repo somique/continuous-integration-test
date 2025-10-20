@@ -6,12 +6,11 @@
 documentation-test documentation
 ================================
 
-Add your content using ``reStructuredText`` syntax. See the
-`reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_
-documentation for details.
+Welcome to an amazing demonstration of the *power of CI*
 
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
+   usage/installation
 
