@@ -12,5 +12,5 @@ Welcome to an amazing demonstration of the *power of CI*
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
-   usage/installation
 
+   usage/installation
