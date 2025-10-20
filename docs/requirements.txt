@@ -1,0 +1,3 @@
+sphinx>=5
+sphinx-rtd-theme
+# any other sphinx extensions you use (sphinx-autodoc-typehints, etc.)
