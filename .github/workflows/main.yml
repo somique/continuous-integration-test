@@ -5,19 +5,29 @@ on:
     branches:
       - main
 
+# Grant the token the permissions needed to push to a branch & create Pages deployments
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo content
-        uses: actions/checkout@v2
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
 
       - name: Prepare build environment
         run: |
           mkdir -p build
           touch build/.nojekyll
 
-      - name: Run pandoc
+      # (Example build step — replace with your pandoc/other build commands)
+      - name: Run pandoc (build site)
         uses: docker://pandoc/core:2.12
         with:
           args: >-
@@ -25,8 +35,15 @@ jobs:
             --output=build/index.html
             README.md
 
-      - name: Deploy on github pages
-        uses: JamesIves/github-pages-deploy-action@4.1.0
+      - name: Ensure git user configured
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: gh-pages
           folder: build
+          # If you explicitly want to pass token, you may do so:
+          # token: ${{ secrets.GITHUB_TOKEN }}
+          # or token: ${{ secrets.YOUR_PAT }} for cross-repo deploys
